@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace hometask1
 {
@@ -18,6 +19,11 @@ namespace hometask1
             Console.WriteLine("зарплата+стипендии: " + salary2 + " USD\n");
 
             var employer = new Employer("Alexander");
+            employer.AddEmployee();
+            var employee = Employer.employees[0];
+            employee.Name = "Yaroslav";
+            employee.SalarySizeUSD = 500;
+            Console.WriteLine("работник года - " + employee.Name + "\nзарплата работника года - " + employee.SalarySizeUSD);
             
 
         }
@@ -64,6 +70,12 @@ namespace hometask1
         public Employer(string name)
         {
             this.Name = name;
+        }
+
+        public static List<Student> employees = new List<Student>();
+        public void AddEmployee() 
+        {
+            employees.Add(new Student());
         }
     }
 }
