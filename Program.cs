@@ -6,20 +6,34 @@ namespace hometask1
     {
         static void Main(string[] args)
         {
-            var student = new Student() { Name = "Ben", Age = 18, IsLovingCoffe = true, ShcolarshipSizeUAH = 0, SalarySizeUSD = 350 };
+            var student1 = new Student() { Name = "Ben", Age = 18, IsLovingCoffe = true, ScholarshipSizeUSD = 0, SalarySizeUSD = 350 };
+            student1.TimeGettingToUniversityMin(20, 30);
+            uint salary1 = student1.StudentsSalary();
+            Console.WriteLine("зарплата+стипендии: "+ salary1+" USD\n");
+           
+
+            var student2 = new Student() { Name = "Ann", Age = 19, IsLovingCoffe = false, ScholarshipSizeUSD = 200, SalarySizeUSD = 300 };
+            student2.TimeGettingToUniversityMin(15);
+            uint salary2 = student2.StudentsSalary();
+            Console.WriteLine("зарплата+стипендии: " + salary2 + " USD\n");
+
             var employer = new Employer("Alexander");
+            
 
         }
     }
     static class MyExtentions
     {
-
+        public static uint StudentsSalary(this Student student)
+        {
+            return student.SalarySizeUSD + student.ScholarshipSizeUSD;
+        }
     }
     public class Student
     {
         public string Name { get; set; }
         public uint Age { get; set; }
-        public uint ShcolarshipSizeUAH { get; set; }
+        public uint ScholarshipSizeUSD { get; set; }
         public bool IsLovingCoffe { get; set; }
         public uint SalarySizeUSD { get; set; }
 
@@ -31,6 +45,7 @@ namespace hometask1
         public int TimeGettingToUniversityMin(int timeOnFoot, int timeOnTransport)
         {
             int timeOnRoad = timeOnFoot + timeOnTransport + TimeForCoffeMin();
+            Console.WriteLine("время на дорогу в университет у "+Name + " : "+timeOnRoad +" минут");
             return timeOnRoad;
         }
 
@@ -38,6 +53,7 @@ namespace hometask1
         public int TimeGettingToUniversityMin(int timeOnFoot)
         {
             int timeOnRoad = timeOnFoot + TimeForCoffeMin();
+            Console.WriteLine("время на дорогу в университет (только пешком) у "+Name + " : " + timeOnRoad+" минут");
             return timeOnRoad;
         }
     }
