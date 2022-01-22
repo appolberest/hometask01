@@ -7,7 +7,7 @@ namespace hometask1
     internal class Employer
     {
         public string Name { get; set; }
-        public static List<Student> employees = new List<Student>();
+        public List<Student> employees = new List<Student>();
 
         public Employer(string name)
         {
